@@ -1,0 +1,13 @@
+{
+    "feedparsex": {
+        "feedparsex": "feedparser X",
+        "label": {
+
+        },
+        "errors": {
+            "badstatuscode": "error - Bad status code",
+            "invalidurl": "Invalid url",
+            "invalidkey": "Invalid key"
+        }
+    }
+}

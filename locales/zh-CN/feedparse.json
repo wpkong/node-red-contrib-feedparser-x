@@ -1,0 +1,12 @@
+{
+    "feedparsex": {
+        "feedparsex": "feedparser X",
+        "label": {
+
+        },
+        "errors": {
+            "badstatuscode": "错误的状态码",
+            "invalidurl": "不合法的地址"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ecdb2dde-6996-4a43-a13d-0aa200ff5e46" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1jxcWqmhsFWU65PGYcfuRxNgx2c" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ecdb2dde-6996-4a43-a13d-0aa200ff5e46" name="Default Changelist" comment="" />
+      <created>1604749219030</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604749219030</updated>
+      <workItem from="1604749220767" duration="21311000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="424" y="181" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604817786324">
+      <screen x="0" y="25" width="1920" height="995" />
+    </state>
+    <state x="424" y="181" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.995@0.25.1920.995" timestamp="1604817786324" />
+    <state x="698" y="273" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604749297495">
+      <screen x="0" y="25" width="1920" height="995" />
+    </state>
+    <state x="698" y="273" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1920.995@0.25.1920.995" timestamp="1604749297495" />
+    <state x="469" y="158" key="SettingsEditor" timestamp="1604816218777">
+      <screen x="0" y="25" width="1920" height="995" />
+    </state>
+    <state x="469" y="158" key="SettingsEditor/0.25.1920.995@0.25.1920.995" timestamp="1604816218777" />
+    <state x="722" y="400" width="608" height="275" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1604816212407">
+      <screen x="0" y="25" width="1920" height="995" />
+    </state>
+    <state x="722" y="400" width="608" height="275" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1920.995@0.25.1920.995" timestamp="1604816212407" />
+  </component>
+</project>

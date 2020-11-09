@@ -1,0 +1,27 @@
+{
+  "name": "node-red-contrib-feedparser-x",
+  "version": "0.0.1",
+  "description": "A Node-RED node to get RSS Atom feeds. (persistent)",
+  "dependencies": {
+    "feedparser": "^2.2.9",
+    "request": "^2.83.0",
+    "sha1": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wpkong/node-red-contrib-feedparser-x"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "node-red",
+    "atom",
+    "rss",
+    "feed",
+    "parse"
+  ],
+  "node-red": {
+    "nodes": {
+      "feedparse-x": "feedparse.js"
+    }
+  }
+}
