@@ -1,5 +1,5 @@
 {
-  "name": "red-contrib-feedparser-x",
+  "name": "node-red-contrib-feedparser-x",
   "version": "0.0.3",
   "description": "A Node-RED node to get RSS Atom feeds. (persistent)",
   "dependencies": {
