@@ -26,7 +26,7 @@ module.exports = function (RED) {
       }
 
       let seenKey = buildKey(feed_url, "seen");
-      console.log("key: ", seenKey)
+
       let nodeContext = node.context();
       nodeContext.get(seenKey, "redis", function (error, seen) {
         // get feed seen table
@@ -69,11 +69,12 @@ module.exports = function (RED) {
             if (!(guid in seen) || (seen[guid] !== 0 && seen[guid] !== article.date.getTime())) {
               seen[article.guid] = article.date ? article.date.getTime() : 0;
 
-              msg.topic = article.origlink || article.link
-              msg.payload = article.description
-              msg.article = article
+              let data = JSON.parse(JSON.stringify(msg));
+              data.topic = article.origlink || article.link
+              data.payload = article.description
+              data.article = article
 
-              node.send(msg);
+              node.send(data);
             }
             delete keys[guid];
           }
