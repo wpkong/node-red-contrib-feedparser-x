@@ -5,7 +5,7 @@
   "dependencies": {
     "feedparser": "^2.2.9",
     "request": "^2.83.0",
-    "sha1": "latest"
+    "sha1": "^1.1.1"
   },
   "repository": {
     "type": "git",
