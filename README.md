@@ -32,6 +32,11 @@ Edit `setting.js`, and search for `contextStorage`. Make some changes like follo
 
 The most significant change is adding `redis` key as well as its config. 
 
+> Tips: `node-red-context-redis` was not released by node-red official in npm any more. But there is 
+> a feasible method that install from a git repo:
+
+    npm install git+https://github.com/node-red-hitachi/node-red-context-redis
+
 Obviously, **a redis server must be launched**.
 
 Usage
@@ -40,7 +45,10 @@ Usage
 ### input:
 `msg.payload` should be assigned as the feed url. 
 
-A recommended method is dragging an `inject` node which intermittently input a url in to this node
+`msg.init_send` is a boolean value, which when set as `true`, the history message would be 
+output, while when set as `false`, it would be not. Default value is `false`
+
+A recommended method is to drag an `inject` node which intermittently input a url in to this node.
  
 
 ### output:

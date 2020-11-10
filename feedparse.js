@@ -14,6 +14,9 @@ module.exports = function (RED) {
     let node = this;
 
     var getFeed = function (msg) {
+      let init_send = msg.init_send || false;
+      let is_existent = true;
+
       if (!msg.payload) {
         node.error(RED._("feedparsex.errors.invalidurl"));
         return;
@@ -34,7 +37,10 @@ module.exports = function (RED) {
           node.error(error);
           return;
         }
-        if (!seen) seen = {};
+        is_existent = !!seen;
+        if (!seen) {
+          seen = {};
+        }
         let keys = JSON.parse(JSON.stringify(seen));
 
         // request feed
@@ -69,11 +75,17 @@ module.exports = function (RED) {
             if (!(guid in seen) || (seen[guid] !== 0 && seen[guid] !== article.date.getTime())) {
               seen[article.guid] = article.date ? article.date.getTime() : 0;
 
-              let data = JSON.parse(JSON.stringify(msg));
-              data.topic = article.origlink || article.link
-              data.payload = article.description
-              data.article = article
+              // is_existent denotes that there are not any cache in redis
+              // init_send denotes that message can be sent whenever cache is clear
+              //
+              if(!is_existent && !init_send){
+                continue;
+              }
 
+              let data = JSON.parse(JSON.stringify(msg));
+              data.topic = article.origlink || article.link;
+              data.payload = article.description;
+              data.article = article;
               node.send(data);
             }
             delete keys[guid];
