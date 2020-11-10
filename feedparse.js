@@ -78,15 +78,13 @@ module.exports = function (RED) {
               // is_existent denotes that there are not any cache in redis
               // init_send denotes that message can be sent whenever cache is clear
               //
-              if(!is_existent && !init_send){
-                continue;
+              if(!(!is_existent && !init_send)){
+                let data = JSON.parse(JSON.stringify(msg));
+                data.topic = article.origlink || article.link;
+                data.payload = article.description;
+                data.article = article;
+                node.send(data);
               }
-
-              let data = JSON.parse(JSON.stringify(msg));
-              data.topic = article.origlink || article.link;
-              data.payload = article.description;
-              data.article = article;
-              node.send(data);
             }
             delete keys[guid];
           }
