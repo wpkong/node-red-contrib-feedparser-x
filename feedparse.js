@@ -16,6 +16,7 @@ module.exports = function (RED) {
     var getFeed = function (msg) {
       let init_send = msg.init_send || false;
       let is_existent = true;
+      let keep_size = msg.keep_size || 30;
 
       if (!msg.payload) {
         node.error(RED._("feedparsex.errors.invalidurl"));
@@ -41,7 +42,8 @@ module.exports = function (RED) {
         if (!seen) {
           seen = {};
         }
-        let keys = JSON.parse(JSON.stringify(seen));
+
+        // let keys = JSON.parse(JSON.stringify(seen));
 
         // request feed
         var req = request(feed_url, {timeout: 10000, pool: false});
@@ -72,9 +74,12 @@ module.exports = function (RED) {
 
           while (article = stream.read()) {  // jshint ignore:line
             let guid = article.guid;
-            if (!(guid in seen) || (seen[guid] !== 0 && seen[guid] !== article.date.getTime())) {
-              seen[article.guid] = article.date ? article.date.getTime() : 0;
-
+            if (!(guid in seen) || (seen[guid].article_date !== 0 && seen[guid].article_date !== article.date.getTime())) {
+              // seen[guid] = article.date ? article.date.getTime() : 0;
+              seen[guid] = {
+                article_date: article.date ? article.date.getTime() : 0,
+                seen_date: new Date().getTime()
+              }
               // is_existent denotes that there are not any cache in redis
               // init_send denotes that message can be sent whenever cache is clear
               //
@@ -86,7 +91,7 @@ module.exports = function (RED) {
                 node.send(data);
               }
             }
-            delete keys[guid];
+            // delete keys[guid];
           }
         });
 
@@ -94,9 +99,27 @@ module.exports = function (RED) {
         });
         feedparser.on('end', function () {
           // remove all disappeared key
-          keys = Object.keys(keys);
-          keys.forEach(value => {
-            delete seen[value];
+          // keys = Object.keys(keys);
+          // keys.forEach(value => {
+          //   delete seen[value];
+          // });
+          let seen_arr = [];
+          Object.keys(seen).forEach(k => {
+            seen_arr.push({
+              id: k,
+              article_date: seen[k].article_date,
+              seen_date: seen[k].seen_date
+            });
+          });
+          // sort from bottom to top
+          seen_arr.sort((a, b) => (a.seen_date > b.seen_date)? 1: -1);
+          // clear
+          seen = {};
+          seen_arr.slice(-keep_size).forEach(v => {
+            seen[v.k] = {
+              article_date: v.article_date,
+              seen_date: v.seen_date
+            };
           });
           // write back to redis
           nodeContext.set(seenKey, seen, "redis");
