@@ -116,7 +116,7 @@ module.exports = function (RED) {
           // clear
           seen = {};
           seen_arr.slice(-keep_size).forEach(v => {
-            seen[v.k] = {
+            seen[v.id] = {
               article_date: v.article_date,
               seen_date: v.seen_date
             };
