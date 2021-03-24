@@ -42,7 +42,6 @@ module.exports = function (RED) {
         if (!seen) {
           seen = {};
         }
-
         // let keys = JSON.parse(JSON.stringify(seen));
 
         // request feed
@@ -112,7 +111,7 @@ module.exports = function (RED) {
             });
           });
           // sort from bottom to top
-          seen_arr.sort((a, b) => (a.seen_date > b.seen_date)? 1: -1);
+          seen_arr.sort((a, b) => (a.article_date > b.article_date)? 1: -1);
           // clear
           seen = {};
           seen_arr.slice(-keep_size).forEach(v => {
