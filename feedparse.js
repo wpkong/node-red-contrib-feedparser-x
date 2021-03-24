@@ -73,7 +73,7 @@ module.exports = function (RED) {
           while (article = stream.read()) {  // jshint ignore:line
             let guid = article.guid;
             if (!(guid in seen) || (seen[guid] !== 0 && seen[guid] !== article.date.getTime())) {
-              seen[article.guid] = article.date ? article.date.getTime() : 0;
+              seen[guid] = article.date ? article.date.getTime() : 0;
 
               // is_existent denotes that there are not any cache in redis
               // init_send denotes that message can be sent whenever cache is clear
