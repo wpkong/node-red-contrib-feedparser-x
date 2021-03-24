@@ -42,8 +42,6 @@ module.exports = function (RED) {
         if (!seen) {
           seen = {};
         }
-        // let keys = JSON.parse(JSON.stringify(seen));
-
         // request feed
         var req = request(feed_url, {timeout: 10000, pool: false});
         //req.setMaxListeners(50);
@@ -74,7 +72,6 @@ module.exports = function (RED) {
           while (article = stream.read()) {  // jshint ignore:line
             let guid = article.guid;
             if (!(guid in seen) || (seen[guid].article_date !== 0 && seen[guid].article_date !== article.date.getTime())) {
-              // seen[guid] = article.date ? article.date.getTime() : 0;
               seen[guid] = {
                 article_date: article.date ? article.date.getTime() : 0,
                 seen_date: new Date().getTime()
@@ -90,18 +87,12 @@ module.exports = function (RED) {
                 node.send(data);
               }
             }
-            // delete keys[guid];
           }
         });
 
         feedparser.on('meta', function (meta) {
         });
         feedparser.on('end', function () {
-          // remove all disappeared key
-          // keys = Object.keys(keys);
-          // keys.forEach(value => {
-          //   delete seen[value];
-          // });
           let seen_arr = [];
           Object.keys(seen).forEach(k => {
             seen_arr.push({

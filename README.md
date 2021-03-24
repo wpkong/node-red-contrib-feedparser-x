@@ -49,7 +49,7 @@ Usage
 output, while when set as `false`, it would be not. Default value is `false`
 
 `msg.keep_size` is a int value which default is 30, which was used to keep specified amount of messages. This module 
-will keep the latest `keep_size` messages. So, it is best to set the value to 1.5 times or even twice the number of entries in the message source list.
+will keep the latest `keep_size` messages. So, it is best to set the value to 1.5 times or even more the number of entries in the message source list.
 
 A recommended method is to drag an `inject` node which intermittently input a url in to this node.
  
